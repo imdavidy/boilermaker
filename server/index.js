@@ -1,11 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 const apiRoutes = require('./api');
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', apiRoutes); // matches all requests to /api
